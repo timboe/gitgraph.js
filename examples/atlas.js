@@ -4,20 +4,23 @@
 
 
 var atlasMetroTemplate = {
-  colors: ["#F00", "#D27100", "#D29D00", "#D20000", "#5B078D", "#0A428A", "#008967", "#97C800"],
+  colors: ["#F00", "#D27100", "#D29D00", "#D20000", "#9F0086", "#0A428A", "#008967", "#97C800"],
   branch: {
     lineWidth: 10,
     spacingX: 50,
     labelRotation: 0
   },
   commit: {
-    spacingY: -80,
+    spacingY: -60,
     dot: {
       size: 14
     },
     message: {
       font: "normal 14pt Arial",
       displayAuthor: false
+    },
+    tooltipHTMLFormatter: function (commit) {
+      return "<b>" + commit.sha1 + "</b>" + " " + commit.date + ": " + commit.message;
     }
   }
 };
@@ -323,11 +326,12 @@ b21_2.commit( { sha1: "9161b9aa", message: "AthDerivation,21.2.7.0", date: "08-1
 
 b21_0_TrigMC.commit( { sha1: "02b8a13c", message: "Athena,21.5.2", date: "09-11-2017" } );
 
-b21_0_mc16d.commit( { sha1: "XXXXXXX", message: "Athena,21.0.50", date: "09-11-2017" } );
+b21_0_mc16d.commit( { sha1: "dc88ba7d3e", message: "Athena,21.0.50", date: "09-11-2017" } );
 
-b21_0.merge( b21_3, { sha1: "XXXXXXXX", message: "Merge 21.0.42", date: "10-11-2017" } );
+b21_0_TrigMC.merge( b21_0_mc16d, { sha1: "cc3cd116", message: "Merge 21.0-TrigMC", date: "10-11-2017" } );
 
-b21_0_TrigMC.merge( b21_0_mc16d, { sha1: "XXXXXXXX", message: "Merge 21.5.2", date: "11-11-2017" } );
+b21_0.merge( b21_3, { sha1: "58bc2304", message: "Merge 21.0.42", date: "11-11-2017" } );
+
 
 
 
